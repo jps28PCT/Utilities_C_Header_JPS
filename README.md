@@ -73,11 +73,13 @@ This function converts an ASCII char between and including '0' and '9' to its in
 
 ### Returns:
 - The converted integer value of the char. Returns 0xEEEE if not a number.
-
+</details>
 
 <details>
 <summary> Constants: </summary>
 All of these constants are guarded in case they are defined elsewhere.
+  
 - `TRUE`: boolean 1
 - `FALSE`: boolean 0
 - `PI`: 3.1415926535897932384626433832795028841971693993751058209749445923
+</details>
