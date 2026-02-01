@@ -22,8 +22,9 @@ String is 9 chars long, and is always right-justified so the prefix is always th
   - `"SigFigErr"` in `returnStr` if significant figure not in range. 
   - `"OutOfRng"` in `returnStr` if value not in range.
 
+
 ## int js_Eng_Power(double inputNum)
-This function finds the power of 10 for the engineering notation formatting of doubles. 
+This function finds the power of 10 for the engineering notation formatting of doubles. <BR />
 The purpose of this function is to allow for specific formatting by only returning the exponent and allowing the formatting to be handled by the parent function.
 
 ### Inputs:
@@ -31,3 +32,17 @@ The purpose of this function is to allow for specific formatting by only returni
 
 ### Returns:
 - integer exponent for engineering notation formatting
+
+
+## double js_Power(double base, int power)
+This function raises a double to an integer power and returns the product as a double.
+
+### Inputs:
+- `base` is the type double base of the operation.
+- `power` is the exponent, and can be any whole integer.
+
+### Returns:
+- The value found by exponentiation (base^power).
+
+
+## 
