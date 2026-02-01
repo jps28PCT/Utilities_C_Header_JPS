@@ -37,7 +37,7 @@
 /*****************************************************************************
  * This function formats a double number in engineering notation, from yocto- 
  * (10^-24) to yotta- (10^24).
- * String is 15 chars long, and is always right-justified so the prefix is 
+ * String is 9 chars long, and is always right-justified so the prefix is 
  * always the 9th char
  *
  * @param	returnStr is the pointer to the string to pass the formatted 
@@ -129,7 +129,7 @@ int js_Eng_Not(char returnStr[15], double inputNum, int sigFigs){
 
 	if(numsAfterDecimal < 0) numsAfterDecimal = 0;
 	
-	sprintf(returnStr, "%4.*f %c", numsAfterDecimal, val, prefix);	//Formats number and prefix and writes it to returnStr
+	sprintf(returnStr, "%*.*f %c", sigFigs - numsAfterDecimal + 1, numsAfterDecimal, val, prefix);	//Formats number and prefix and writes it to returnStr
 	return 0;												//Return 0 for success
 
 }//END js_Eng_Not()
@@ -259,5 +259,33 @@ char js_Int_to_Char(int IntToConv){
 
 	return CharToRet;						//Returns ASCII char representation of int
 
+}//END js_Int_to_Char()
+
+
+
+/*****************************************************************************
+ * This function converts an ASCII char between and including '0' and '9' to 
+ * its integer equivalent.
+ * @param	CharToConv is the char to convert
+ *
+ * @return	The converted integer value of the char
+ * 			Returns 0xEEEE if not a number.
+ *
+****************************************************************************/
+char js_Char_to_Int(char CharToConv){
+	
+	/***** VARIABLE INITIALIZATION *****/
+	int IntToRet;							//ASCII char representing the int
+	/*** END VARIABLE INITIALIZATION ***/
+
+	if(CharToConv > '9'  || CharToConv < '0'){	//If IntToConv is less than 0 or greater than 9
+		IntToRet = 0xEEEE;					//0xEEEE for ERROR - out of range
+	}
+	else{									//Else if within range
+		IntToRet = CharToConv - 0x30;		//Find the ASCII char value of the int
+	}
+
+	return IntToRet;						//Returns ASCII char representation of int
 
 }//END js_Int_to_Char()
+
